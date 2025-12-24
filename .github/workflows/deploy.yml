@@ -33,7 +33,7 @@ jobs:
           docker push $ECR_URI:latest
       
       - name: Setup Terraform
-        uses hashicorp/setup-terraform@v3
+        uses: hashicorp/setup-terraform@v3
         with:
           terraform_version: 1.5.7
 
