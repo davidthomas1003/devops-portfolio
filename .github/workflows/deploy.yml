@@ -1,0 +1,35 @@
+name: Deploy to AWS ECS
+
+on:
+  push:
+    branches:
+      - aphrodite
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Build Docker image
+        run: docker build -t devops-portfolio-app ./app
+
+      - name: Tag & push to ECR
+        run: |
+          docker tag devops-portfolio-app:latest 865091755851.dkr.ecr.us-east-1.amazonaws.com/devops-portfolio-repo:latest
+          docker push 865091755851.dkr.ecr.us-east-1.amazonaws.com/devops-portfolio-repo:latest
+
+      - name: Terraform apply
+        run: |
+          cd terraform
+          terraform init
+          terraform apply -auto-approve
