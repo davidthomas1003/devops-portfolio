@@ -31,6 +31,11 @@ jobs:
           ECR_URI=865091755851.dkr.ecr.us-east-1.amazonaws.com/devops-portfolio-repo
           docker tag devops-portfolio-app:latest $ECR_URI:latest
           docker push $ECR_URI:latest
+      
+      - name: Setup Terraform
+        uses hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.5.7
 
       - name: Terraform apply
         run: |
