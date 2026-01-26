@@ -19,6 +19,16 @@ This repository demonstrates a production-style DevOps workflow using AWS, Terra
 
 ![Architecture](assets/architecture.png)
 
+## Pipeline Example
+
+![Pipeline](assets/pipeline.png)
+*GitHub Actions deploying container to ECS successfully*
+
+## Running App
+
+![App Screenshot](assets/app.png)
+*Flask app served via ECS Fargate*
+
 ## CI/CD Pipeline
 - Build Docker image
 - Push image to Amazon ECR
