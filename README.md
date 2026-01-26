@@ -17,7 +17,7 @@ This repository demonstrates a production-style DevOps workflow using AWS, Terra
 
 ## Architecture Diagram
 
-![Architecture](assets/architecture.png)
+![Architecture](assets/Architecture.drawio.png)
 
 ## Pipeline Example
 
